@@ -1,0 +1,70 @@
+header {
+  height: 23vh;
+  width: 100vw;
+  background-color: #07224bf5;
+  box-shadow: 1px 5px 10px lightcyan;
+  
+
+}
+
+
+
+body {
+  font-size: 15px;
+  background: linear-gradient(#81808b, #cbceeb);
+  height: 100vh;
+  width: 100vw;
+}
+
+.h1-style {
+  font-size: 5rem ;
+  font-family: fantasy;
+  color: cyan;
+}
+
+
+
+.logo {
+  width: 5%;
+  height: 100%;
+ 
+}
+
+.LogoTitle {
+  display : flex;
+  justify-content: center;
+ /* padding-top: 5vh; */
+}
+
+div ul{
+  display:flex;
+  justify-content: space-evenly;
+  margin-top: 6vh;
+  list-style-type: none;
+
+}
+
+div ul a {
+  text-decoration: none;
+  font-size: 2rem;
+  font-family: fantasy;
+  color: cyan;
+  background-color: #3fa648;
+  padding: 1vw;
+  border-radius: 12px;
+  border: solid 2px black;
+
+}
+
+div ul li{
+  transition: transform 0.2s;
+}
+
+div ul li:hover{
+  
+  transform: scale(1.2);
+
+}
+
+
+
