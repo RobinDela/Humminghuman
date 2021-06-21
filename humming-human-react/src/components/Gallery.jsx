@@ -1,7 +1,22 @@
 import './style/Gallery.css';
 import { ReactMediaRecorder } from 'react-media-recorder';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Gallery = () => {
+  const [media, setMedia] = useState(null);
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    console.log('-------' + media);
+    console.log('sent');
+  };
+
+  useEffect(() => {
+    axios.post(`http://localhost:5050/samplesent`, media).then(({ media }) => {
+      console.log(media);
+    });
+  }, [media]);
+
   return (
     <div className='gallery-box'>
       <div>
@@ -11,8 +26,19 @@ const Gallery = () => {
             <div>
               <p>{status}</p>
               <button onClick={startRecording}>Start Recording</button>
-              <button onClick={stopRecording}>Stop Recording</button>
-              <audio src={mediaBlobUrl} controls autoplay loop />
+              <button
+                onClick={() => {
+                  stopRecording();
+                  setMedia(mediaBlobUrl);
+                }}
+              >
+                Stop Recording
+              </button>
+              <audio src={mediaBlobUrl} controls autoPlay />
+              <form onSubmit={handleSubmit}>
+                <input type='hidden' value={mediaBlobUrl || 'test'} />
+                <input type='submit' value='Send' />
+              </form>
             </div>
           )}
         />
