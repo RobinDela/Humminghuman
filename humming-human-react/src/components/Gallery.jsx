@@ -12,9 +12,15 @@ const Gallery = () => {
   };
 
   useEffect(() => {
-    axios.post(`http://localhost:5050/samplesent`, media).then(({ media }) => {
-      console.log(media);
-    });
+    axios
+      .post(`http://localhost:5050/samplesent`, media, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+      .then((media) => {
+        console.log(media);
+      });
   }, [media]);
 
   return (
@@ -36,7 +42,7 @@ const Gallery = () => {
               </button>
               <audio src={mediaBlobUrl} controls autoPlay />
               <form onSubmit={handleSubmit}>
-                <input type='hidden' value={mediaBlobUrl || 'test'} />
+                <input type='hidden' value={mediaBlobUrl} />
                 <input type='submit' value='Send' />
               </form>
             </div>
